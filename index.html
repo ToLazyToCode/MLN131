@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thuyết trình: Liên minh giai cấp Lênin & Việt Nam</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-red: #ef4444; 
+            --primary-red-dark: #b91c1c; 
+            --slate-950: #020617;
+            --slate-900: #0f172a;
+            --slate-800: #1e293b;
+            --slate-700: #334155;
+            --slate-500: #64748b;
+            --slate-400: #94a3b8;
+            --slate-200: #e2e8f0;
+            --slate-100: #f1f5f9;
+            --slate-50: #f8fafc;
+            --bg-main: #ffffff;
+            --sidebar-width: 288px;
+            --font-sans: 'Inter', 'Be Vietnam Pro', system-ui, sans-serif;
+            --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            --accent-soft: rgba(239, 68, 68, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--slate-50);
+            color: var(--slate-900);
+            line-height: 1.5;
+            overflow: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Layout Structure */
+        .app-container {
+            display: flex;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        /* Sidebar Styling */
+        aside {
+            width: var(--sidebar-width);
+            background: var(--slate-950);
+            border-right: 1px solid var(--slate-900);
+            display: flex;
+            flex-direction: column;
+            z-index: 100;
+            flex-shrink: 0;
+        }
+
+        .sidebar-header {
+            padding: 2.5rem 2rem;
+        }
+
+        .sidebar-label {
+            font-size: 0.65rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            color: var(--primary-red);
+            margin-bottom: 0.75rem;
+        }
+
+        .sidebar-header h1 {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: white;
+            line-height: 1.2;
+            text-transform: uppercase;
+            letter-spacing: -0.01em;
+        }
+
+        .sidebar-nav {
+            list-style: none;
+            flex-grow: 1;
+            padding: 0 1rem;
+        }
+
+        .sidebar-nav li {
+            margin-bottom: 0.5rem;
+        }
+
+        .sidebar-nav a {
+            text-decoration: none;
+            color: var(--slate-400);
+            font-size: 0.8125rem;
+            font-weight: 600;
+            padding: 0.875rem 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .sidebar-nav a .nav-num {
+            font-family: var(--font-mono);
+            font-size: 0.625rem;
+            opacity: 0.4;
+            letter-spacing: 0.1em;
+        }
+
+        .sidebar-nav a:hover {
+            color: white;
+            background: rgba(255,255,255,0.08);
+            transform: translateX(4px);
+        }
+
+        .sidebar-nav a.active {
+            background-color: var(--primary-red);
+            color: white;
+            box-shadow: 0 10px 15px -3px rgba(239, 68, 68, 0.3);
+        }
+
+        .sidebar-nav a.active .nav-num {
+            opacity: 0.8;
+            color: white;
+        }
+
+        .sidebar-footer {
+            padding: 2rem;
+            border-top: 1px solid var(--slate-900);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .status-dot {
+            width: 0.5rem;
+            height: 0.5rem;
+            border-radius: 50%;
+            background-color: #22c55e;
+            box-shadow: 0 0 8px #22c55e;
+        }
+
+        .status-text {
+            font-size: 0.625rem;
+            color: var(--slate-500);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-weight: 700;
+        }
+
+        /* Main Content Styling */
+        main {
+            flex-grow: 1;
+            height: 100vh;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+            scrollbar-width: none;
+            background: var(--bg-main);
+            position: relative;
+        }
+
+        main::-webkit-scrollbar {
+            display: none;
+        }
+
+        section {
+            height: 100vh;
+            width: 100%;
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            padding: 4rem 5rem;
+            overflow: hidden;
+            background: radial-gradient(circle at top right, var(--slate-50), white);
+        }
+
+        /* Decorative Background */
+        .decor-number {
+            position: absolute;
+            bottom: -2rem;
+            right: 0rem;
+            font-size: 25rem;
+            font-weight: 900;
+            color: var(--slate-50);
+            line-height: 0.8;
+            z-index: 0;
+            opacity: 0.7;
+            user-select: none;
+            pointer-events: none;
+        }
+
+        .decor-light-beam {
+            position: absolute;
+            top: -10%;
+            right: -10%;
+            width: 40%;
+            height: 50%;
+            background: radial-gradient(circle, rgba(239, 68, 68, 0.03) 0%, transparent 70%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .section-content {
+            position: relative;
+            z-index: 10;
+            max-width: 1400px; /* Widened */
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            margin: 0 auto;
+        }
+
+        section.visible .section-content {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Typography & Components */
+        .section-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.375rem 1rem;
+            background: var(--accent-soft);
+            color: var(--primary-red-dark);
+            font-size: 0.65rem;
+            font-weight: 800;
+            border-radius: 9999px;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(239, 68, 68, 0.1);
+        }
+
+        h2 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--slate-950);
+            margin-bottom: 1rem;
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+        }
+
+        h2 span.accent {
+            color: var(--primary-red-dark);
+            position: relative;
+        }
+
+        .subtitle {
+            font-size: 1.125rem;
+            color: var(--slate-500);
+            font-weight: 400;
+            margin-bottom: 2.5rem;
+            max-width: 48rem;
+            padding-left: 1.75rem;
+            border-left: 3px solid var(--primary-red);
+            line-height: 1.6;
+        }
+
+        /* Grid System */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            flex: 1;
+            align-items: center;
+        }
+
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+        }
+
+        .card {
+            background: white;
+            padding: 1.75rem;
+            border-radius: 1rem;
+            border: 1px solid var(--slate-100);
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02), 0 2px 4px -2px rgba(0,0,0,0.02);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.05), 0 8px 10px -6px rgba(0,0,0,0.05);
+            border-color: var(--slate-200);
+        }
+
+        .card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background: var(--primary-red);
+            transition: height 0.3s ease;
+        }
+
+        .card:hover::after {
+            height: 100%;
+        }
+
+        .card-icon {
+            width: 3rem;
+            height: 3rem;
+            background: var(--slate-50);
+            color: var(--slate-900);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0.75rem;
+            margin-bottom: 1.25rem;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover .card-icon {
+            background: var(--slate-950);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .card h3 {
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--slate-900);
+            letter-spacing: -0.01em;
+        }
+
+        .card p {
+            font-size: 0.9375rem;
+            color: var(--slate-500);
+            line-height: 1.6;
+        }
+
+        /* Image Framing */
+        .image-outer {
+            position: relative;
+            z-index: 10;
+        }
+
+        .image-bg-accent {
+            position: absolute;
+            inset: -1.5rem;
+            background: var(--slate-50);
+            border-radius: 2rem;
+            z-index: -1;
+            border: 1px solid var(--slate-100);
+        }
+
+        .image-container {
+            width: 100%;
+            position: relative;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.2);
+            border: 8px solid white;
+            background: var(--slate-100);
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .image-container:hover {
+            transform: scale(1.02);
+        }
+
+        .image-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(15, 23, 42, 0.6), transparent 50%);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .image-caption-strip {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem 2rem;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 5;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--slate-100);
+        }
+
+        .image-caption-text h4 {
+            font-size: 0.875rem;
+            font-weight: 800;
+            color: var(--slate-900);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .image-caption-text span {
+            font-size: 0.75rem;
+            color: var(--slate-500);
+        }
+
+        .image-badge {
+            padding: 0.25rem 0.625rem;
+            background: var(--primary-red);
+            color: white;
+            border-radius: 0.25rem;
+            font-size: 0.625rem;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            transition: filter 0.3s ease;
+        }
+
+        /* Decorative Elements */
+        .chip-group {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .chip {
+            padding: 0.5rem 1rem;
+            background: white;
+            border: 1px solid var(--slate-200);
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--slate-600);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+        }
+
+        .chip-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--primary-red);
+            border-radius: 50%;
+        }
+
+        .mini-stat {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 1.25rem;
+            background: var(--slate-950);
+            color: white;
+            border-radius: 1rem;
+            min-width: 10rem;
+        }
+
+        .stat-val {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.025em;
+        }
+
+        .stat-label {
+            font-size: 0.625rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.6;
+        }
+
+        .insight-box {
+            padding: 1.5rem;
+            background: var(--slate-50);
+            border-radius: 1rem;
+            border-left: 4px solid var(--primary-red);
+            margin-top: 2rem;
+        }
+
+        .insight-box h5 {
+            font-size: 0.875rem;
+            font-weight: 800;
+            color: var(--slate-900);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .insight-box p {
+            font-size: 0.8125rem;
+            color: var(--slate-600);
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        .footer-bar {
+            height: 6rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid var(--slate-100);
+            padding: 0;
+            margin-top: auto;
+        }
+
+        .info-ribbon {
+            display: flex;
+            gap: 2.5rem;
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: var(--slate-400);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+        }
+
+        .info-ribbon strong {
+            color: var(--slate-900);
+        }
+
+        /* Specialized Lists */
+        .modern-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .modern-list-item {
+            display: flex;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 1rem;
+            border: 1px solid var(--slate-100);
+            transition: all 0.3s ease;
+        }
+
+        .modern-list-item:hover {
+            border-color: var(--slate-200);
+            transform: scale(1.01);
+            background: var(--slate-50);
+        }
+
+        .item-num {
+            font-family: var(--font-mono);
+            font-size: 1rem;
+            font-weight: 800;
+            color: var(--primary-red);
+        }
+
+        .item-content h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .item-content p {
+            font-size: 0.875rem;
+            color: var(--slate-500);
+        }
+
+        /* Section Specifics */
+        #section1 {
+            background: var(--slate-950);
+            color: white;
+        }
+
+        #section1 h2, #section1 .subtitle {
+            color: white;
+        }
+
+        #section1 .section-tag {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border-color: rgba(255,255,255,0.2);
+        }
+
+        #section1 .intro-summary {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            backdrop-filter: blur(20px);
+        }
+
+        #section1 .intro-summary p { color: var(--slate-200); }
+        #section1 .intro-summary li { color: var(--slate-400); }
+
+        #section8 {
+            background: var(--slate-950);
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .conclusion-wrap {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* AI Usage Grid */
+        .ai-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .ai-tool-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 1.5rem;
+            border: 1px solid var(--slate-100);
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .progress-track {
+            height: 6px;
+            background: var(--slate-100);
+            border-radius: 999px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--primary-red);
+            border-radius: 999px;
+        }
+
+        @media (max-width: 1200px) {
+            .content-grid { gap: 2rem; }
+            h2 { font-size: 2.75rem; }
+        }
+
+        @media (max-width: 1024px) {
+            aside { display: none; }
+            main { scroll-snap-type: none; overflow-y: auto; height: auto; }
+            section { height: auto; padding: 4rem 2rem; }
+            .content-grid { grid-template-columns: 1fr; }
+            .image-outer { order: -1; }
+            .ai-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="app-container">
+    <aside>
+        <div class="sidebar-header">
+            <div class="sidebar-label">PDR Report 2026</div>
+            <h1>TƯ TƯỞNG <br>LIÊN MINH GIAI CẤP</h1>
+        </div>
+        <ul class="sidebar-nav" id="sidebar-nav">
+            <li><a href="#section1" class="active"><span class="nav-num">01</span><span>Tổng quan</span></a></li>
+            <li><a href="#section2"><span class="nav-num">02</span><span>Cội nguồn Lênin</span></a></li>
+            <li><a href="#section3"><span class="nav-num">03</span><span>Bối cảnh Việt Nam</span></a></li>
+            <li><a href="#section4"><span class="nav-num">04</span><span>Mắt xích mới</span></a></li>
+            <li><a href="#section5"><span class="nav-num">05</span><span>Phát triển giai tầng</span></a></li>
+            <li><a href="#section6"><span class="nav-num">06</span><span>Hệ sinh thái 5-Nhà</span></a></li>
+            <li><a href="#section7"><span class="nav-num">07</span><span>Xung kích Sinh viên</span></a></li>
+            <li><a href="#section8"><span class="nav-num">08</span><span>Kết luận</span></a></li>
+            <li><a href="#ai-usage"><span class="nav-num">09</span><span>AI Usage</span></a></li>
+        </ul>
+        <div class="sidebar-footer">
+            <div class="status-dot"></div>
+            <span class="status-text">Live Presentation</span>
+        </div>
+    </aside>
+
+    <main id="main-content">
+        <!-- Section 1 -->
+        <section id="section1">
+            <div class="decor-light-beam"></div>
+            <div class="decor-number">01</div>
+            <div class="section-content">
+                <header>
+                    <span class="section-tag">Executive Summary</span>
+                    <h2>Tư tưởng Liên minh Giai cấp <br><span class="accent">Hướng tới Kỷ nguyên Mới</span></h2>
+                    <p class="subtitle">Tái cấu trúc khối liên kết truyền thống sang mô hình hợp tác toàn diện dựa trên nền tảng kinh tế tri thức và công nghệ số.</p>
+                </header>
+                <div class="content-grid">
+                    <div class="text-wrap">
+                        <div class="intro-summary">
+                            <p>Đề tài tập trung phân tích sự vận động không ngừng của khối Công - Nông - Trí thức trong thực tiễn Việt Nam.</p>
+                            <ul style="list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                                <li style="font-size: 0.8125rem; display: flex; align-items: center; gap: 0.75rem;"><div style="width: 4px; height: 4px; background: var(--primary-red); border-radius: 50%;"></div>Lý luận Liên minh tinh hoa</li>
+                                <li style="font-size: 0.8125rem; display: flex; align-items: center; gap: 0.75rem;"><div style="width: 4px; height: 4px; background: var(--primary-red); border-radius: 50%;"></div>Cơ cấu xã hội Việt Nam</li>
+                                <li style="font-size: 0.8125rem; display: flex; align-items: center; gap: 0.75rem;"><div style="width: 4px; height: 4px; background: var(--primary-red); border-radius: 50%;"></div>Mắt xích Trí thức & Doanh nhân</li>
+                                <li style="font-size: 0.8125rem; display: flex; align-items: center; gap: 0.75rem;"><div style="width: 4px; height: 4px; background: var(--primary-red); border-radius: 50%;"></div>Vai trò xung kích tương lai</li>
+                            </ul>
+                        </div>
+                        <div class="chip-group">
+                            <div class="chip" style="color: #FF0000"><div class="chip-dot"></div>Chủ nghĩa Mác-Lênin</div>
+                            <div class="chip" style="color: #FF0000"><div class="chip-dot"></div>Vận dụng sáng tạo</div>
+                            <div class="chip" style="color: #FF0000"><div class="chip-dot"></div>Việt Nam hiện đại</div>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 1.5rem; justify-content: flex-end;">
+                        <div class="mini-stat" style="margin-top: 4rem;">
+                            <span class="stat-label">Theory Focus</span>
+                            <span class="stat-val">Core</span>
+                        </div>
+                        <div class="mini-stat">
+                            <span class="stat-label">Application</span>
+                            <span class="stat-val">Active</span>
+                        </div>
+                    </div>
+                </div>
+                <footer class="footer-bar">
+                    <div class="info-ribbon">
+                        <span>Status: <strong style="color: #007bff">Finalized</strong></span>
+                        <span>Topic: <strong style="color: #007bff">Sociology</strong></span>
+                    </div>
+                    <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--slate-500);">SLIDE 01 / 09</div>
+                </footer>
+            </div>
+        </section>
+
+        <!-- Section 2 -->
+        <section id="section2">
+            <div class="decor-number">02</div>
+            <div class="section-content">
+                <header>
+                    <span class="section-tag">Scientific Theory</span>
+                    <h2>Tư tưởng gốc <span class="accent">của V.I. Lênin</span></h2>
+                    <p class="subtitle">Liên minh là quy luật mang tính chiến lược, đảm bảo sự sống còn của Nhà nước vô sản và sự ổn định của nền kinh tế XHCN.</p>
+                </header>
+                <div class="content-grid">
+                    <div class="text-wrap">
+                        <div class="grid-cards">
+                            <div class="card">
+                                <div class="card-icon"><svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke-width="2"></path></svg></div>
+                                <h3>Cơ sở Chính trị</h3>
+                                <p>Sự thống nhất hành động giữa Công nhân và Nông dân để tiêu diệt áp bức và xây dựng chế độ mới.</p>
+                            </div>
+                            <div class="card">
+                                <div class="card-icon"><svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-width="2"></path></svg></div>
+                                <h3>Cơ sở Kinh tế</h3>
+                                <p>Luân chuyển hàng hóa giữa Thành thị và Nông thôn, tạo ra chuỗi giá trị XHCN bền vững.</p>
+                            </div>
+                        </div>
+                        <div class="insight-box">
+                            <h5>Tóm tắt lý luận</h5>
+                            <p>Không có sự giúp đỡ của nông dân, giai cấp công nhân không thể duy trì được chính quyền và không thể chiến thắng được tư bản.</p>
+                        </div>
+                    </div>
+                    <div class="image-outer">
+                        <div class="image-bg-accent"></div>
+                        <div class="image-container" style="aspect-ratio: 4/5;">
+                            <img data-image-key="theory" style="object-fit: cover;" alt="Theory">
+                            <div class="image-caption-strip">
+                                <div class="image-caption-text">
+                                    <h4>Lưu trữ Lịch sử</h4>
+                                    <span>Tư duy Lênin về liên minh 1917</span>
+                                </div>
+                                <div class="image-badge">Origin</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <footer class="footer-bar">
+                    <div class="info-ribbon">
+                        <span>Key Pillars: <strong>Politics / Economics / Social</strong></span>
+                    </div>
+                    <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--slate-500);">SLIDE 02 / 09</div>
+                </footer>
+            </div>
+        </section>
+
+        <!-- Section 3 -->
+        <section id="section3">
+            <div class="decor-number">03</div>
+            <div class="section-content">
+                <header>
+                    <span class="section-tag">National Context</span>
+                    <h2>Thực tiễn <span class="accent">tại Việt Nam</span></h2>
+                    <p class="subtitle">Sự vận dụng sáng tạo của Đảng Cộng sản Việt Nam qua các thời kỳ, đặc biệt là trong giai đoạn đẩy mạnh CNH-HĐH.</p>
+                </header>
+                <div class="content-grid" style="grid-template-columns: 0.9fr 1.1fr;">
+                    <div class="image-outer">
+                        <div class="image-bg-accent" style="left: -2rem; right: 1rem;"></div>
+                        <div class="image-container" style="aspect-ratio: 1/1;">
+                            <img data-image-key="vietnam" style="object-fit: cover;" alt="Vietnam">
+                            <div class="image-overlay"></div>
+                        </div>
+                    </div>
+                    <div class="text-wrap">
+                        <div class="modern-list">
+                            <div class="modern-list-item">
+                                <span class="item-num">01</span>
+                                <div class="item-content">
+                                    <h4>Dịch chuyển cơ cấu</h4>
+                                    <p>Sự gia tăng tỷ trọng lao động dịch vụ và công nghiệp công nghệ cao.</p>
+                                </div>
+                            </div>
+                            <div class="modern-list-item">
+                                <span class="item-num">02</span>
+                                <div class="item-content">
+                                    <h4>Gắn kết lợi ích</h4>
+                                    <p>Liên minh không chỉ là chính trị mà là sự đồng hành trong kinh tế thị trường.</p>
+                                </div>
+                            </div>
+                            <div class="modern-list-item">
+                                <span class="item-num">03</span>
+                                <div class="item-content">
+                                    <h4>Nâng cao dân trí</h4>
+                                    <p>Trí thức hóa các giai tầng là yêu cầu bắt buộc của kỷ nguyên số.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <footer class="footer-bar">
+                    <div class="info-ribbon">
+                        <span>Transition: <strong>Tradition to Modernity</strong></span>
+                    </div>
+                    <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--slate-500);">SLIDE 03 / 09</div>
+                </footer>
+            </div>
+        </section>
+
+        <!-- Section 4 -->
+        <section id="section4">
+            <div class="decor-number">04</div>
+            <div class="section-content">
+                <header>
+                    <span class="section-tag">New Catalysts</span>
+                    <h2>Những mắt xích <span class="accent">mới xuất hiện</span></h2>
+                    <p class="subtitle">Sự bổ sung "đội ngũ Trí thức" và "Doanh nhân" tạo thành bộ khung vững chắc cho nền kinh tế Việt Nam hiện đại.</p>
+                </header>
+                <div class="content-grid">
+                    <div class="text-wrap">
+                        <div class="chip-group" style="margin-bottom: 1.5rem; margin-top: 0;">
+                            <div class="chip" style="background: #eff6ff; color: #1e40af; border-color: #dbeafe;">Trí thức số</div>
+                            <div class="chip" style="background: #f0fdf4; color: #166534; border-color: #dcfce7;">Doanh nhân 4.0</div>
+                            <div class="chip" style="background: #faf5ff; color: #6b21a8; border-color: #f3e8ff;">Chuyên gia tư vấn</div>
+                        </div>
+                        <div class="grid-cards">
+                            <div class="card">
+                                <h3>Hạt nhân Trí thức</h3>
+                                <p>Cung cấp giải pháp khoa học, quy trình tối ưu và phát minh sáng tạo cho sản xuất.</p>
+                            </div>
+                            <div class="card">
+                                <h3>Động lực Doanh nhân</h3>
+                                <p>Tổ chức sản xuất, khơi thông dòng vốn và đưa sản phẩm Việt ra thị trường quốc tế.</p>
+                            </div>
+                        </div>
+                        <div class="insight-box" style="border-color: #1e40af;">
+                            <h5>Vai trò dẫn dắt</h5>
+                            <p>Đây là những lực lượng "kích hoạt" tiềm năng của Công nhân và Nông dân trong môi trường số.</p>
+                        </div>
+                    </div>
+                    <div class="image-outer">
+                        <div class="image-container" style="aspect-ratio: 16/10;">
+                            <img data-image-key="newLinks" style="object-fit: cover;" alt="Labs">
+                            <div class="image-caption-strip">
+                                <div class="image-caption-text">
+                                    <h4>Innovation Hub</h4>
+                                    <span>Trung tâm nghiên cứu & phát triển</span>
+                                </div>
+                                <div class="image-badge" style="background: #1e40af;">New Link</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <footer class="footer-bar">
+                    <div class="info-ribbon">
+                        <span>Drivers: <strong>Knowledge / Management</strong></span>
+                    </div>
+                    <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--slate-500);">SLIDE 04 / 09</div>
+                </footer>
+            </div>
+        </section>
+
+        <!-- Section 5 -->
+        <section id="section5">
+            <div class="decor-number">05</div>
+            <div class="section-content">
+                <header>
+                    <span class="section-tag">Transformation</span>
+                    <h2>Biến đổi của <span class="accent">giai cấp truyền thống</span></h2>
+                    <p class="subtitle">Không còn ranh giới rạch ròi, Công nhân và Nông dân đang dần hòa nhập vào cộng đồng lao động tri thức.</p>
+                </header>
+                <div class="content-grid" style="grid-template-columns: 1.15fr 0.85fr;">
+                    <div class="image-outer">
+                        <div class="image-container" style="aspect-ratio: 16/9;">
+                            <img data-image-key="transformation" style="object-fit: cover;" alt="Evolution">
+                        </div>
+                        <div style="display: flex; gap: 1rem; margin-top: 1.25rem;">
+                            <div class="card" style="flex: 1; padding: 1.25rem;">
+                                <h3 style="font-size: 0.875rem;">Nông dân số</h3>
+                                <p style="font-size: 0.75rem;">Sử dụng IoT và AI trong canh tác chính xác.</p>
+                            </div>
+                            <div class="card" style="flex: 1; padding: 1.25rem;">
+                                <h3 style="font-size: 0.875rem;">Công nhân Hi-Tech</h3>
+                                <p style="font-size: 0.75rem;">Vận hành robot và dây chuyền tự động hóa.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-wrap">
+                        <div class="insight-box" style="margin-top: 0;">
+                            <h5>Chuyên môn hóa</h5>
+                            <p>Yêu cầu về bằng cấp và kỹ năng tay nghề cao đang thay thế dần lao động cơ bắp truyền thống.</p>
+                        </div>
+                        <div class="card" style="margin-top: 1.5rem; background: var(--slate-950); color: white;">
+                             <h3 style="color: white;">Tầm nhìn 2030</h3>
+                             <p style="color: var(--slate-400);">Xây dựng đội ngũ công nhân hiện đại, có bản lĩnh chính trị và trình độ chuyên môn vượt trội.</p>
+                        </div>
+                    </div>
+                </div>
+                <footer class="footer-bar">
+                    <div class="info-ribbon">
+                        <span>Horizon: <strong>Vision 2030 - 2045</strong></span>
+                    </div>
+                    <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--slate-500);">SLIDE 05 / 09</div>
+                </footer>
+            </div>
+        </section>
+
+        <!-- Section 6 -->
+        <section id="section6">
+            <div class="decor-number">06</div>
+            <div class="section-content">
+                <header>
+                    <span class="section-tag">New Ecosystem</span>
+                    <h2>Mô hình liên kết <span class="accent">"5 Nhà" hiện đại</span></h2>
+                    <p class="subtitle">Chuỗi giá trị khép kín từ nghiên cứu đến tiêu dùng, lấy lợi ích kinh tế làm chất xúc tác bền vững.</p>
+                </header>
+                <div class="content-grid">
+                    <div class="text-wrap">
+                        <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                            <div style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: var(--slate-50); border-radius: 0.75rem;">
+                                <div style="width: 2rem; height: 2rem; background: var(--primary-red); color: white; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-weight: 800; font-size: 0.75rem;">1</div>
+                                <span style="font-weight: 700; font-size: 0.875rem;">Quy hoạch chính sách (Nhà nước)</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: var(--slate-50); border-radius: 0.75rem; margin-left: 1.5rem;">
+                                <div style="width: 2rem; height: 2rem; background: var(--slate-400); color: white; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-weight: 800; font-size: 0.75rem;">2</div>
+                                <span style="font-weight: 700; font-size: 0.875rem;">Nghiên cứu ứng dụng (Nhà khoa học)</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: var(--slate-50); border-radius: 0.75rem; margin-left: 3rem;">
+                                <div style="width: 2rem; height: 2rem; background: var(--slate-950); color: white; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-weight: 800; font-size: 0.75rem;">3</div>
+                                <span style="font-weight: 700; font-size: 0.875rem;">Sản xuất & Thị trường (Nông dân / Doanh nghiệp)</span>
+                            </div>
+                        </div>
+                        <div class="insight-box">
+                            <h5>Cấu trúc vận hành</h5>
+                            <p>Sự phối hợp nhịp nhàng giúp giảm thiểu rủi ro "được mùa mất giá" và tối ưu hóa lợi nhuận.</p>
+                        </div>
+                    </div>
+                    <div class="image-outer">
+                        <div class="image-container" style="background: white;">
+                            <img data-image-key="model" style="object-fit: contain;" alt="Model Diagram">
+                        </div>
+                    </div>
+                </div>
+                <footer class="footer-bar">
+                    <div class="info-ribbon">
+                        <span>Model: <strong>Multi-stakeholder Collaboration</strong></span>
+                    </div>
+                    <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--slate-500);">SLIDE 06 / 09</div>
+                </footer>
+            </div>
+        </section>
+
+        <!-- Section 7 -->
+        <section id="section7">
+            <div class="decor-number">07</div>
+            <div class="section-content">
+                <header>
+                    <span class="section-tag">Youth Engagement</span>
+                    <h2>Sứ mệnh xung kích <span class="accent">của Sinh viên</span></h2>
+                    <p class="subtitle">Thế hệ Gen Z và Alpha không chỉ là đối tượng thụ hưởng mà là chủ thể kiến tạo tương lai của khối liên minh.</p>
+                </header>
+                <div class="content-grid" style="grid-template-columns: 0.8fr 1.2fr;">
+                    <div class="image-outer">
+                        <div class="image-container" style="border-radius: 3rem; aspect-ratio: 1/1; border-width: 12px;">
+                            <img data-image-key="students" style="object-fit: cover;" alt="Youth">
+                        </div>
+                    </div>
+                    <div class="text-wrap">
+                        <div class="grid-cards">
+                            <div class="card">
+                                <h3>Thành phần dự bị tinh hoa</h3>
+                                <p>Là nguồn bổ sung dồi dào và chất lượng nhất cho đội ngũ Trí thức quốc gia.</p>
+                            </div>
+                            <div class="card">
+                                <h3>Cầu nối Chuyển đổi số</h3>
+                                <p>Trực tiếp hỗ trợ nông dân, công nhân tiếp cận công nghệ mới và thương mại điện tử.</p>
+                            </div>
+                        </div>
+                        <div class="insight-box" style="background: var(--accent-soft); border-color: var(--primary-red);">
+                            <h5>Ví dụ thực tiễn</h5>
+                            <p>Các chiến dịch Mùa hè xanh, các dự án khởi nghiệp nông nghiệp số của sinh viên các trường đại học.</p>
+                        </div>
+                        <div class="chip-group">
+                            <div class="chip">Khởi nghiệp sáng tạo</div>
+                            <div class="chip">Tình nguyện chuyên môn</div>
+                        </div>
+                    </div>
+                </div>
+                <footer class="footer-bar">
+                    <div class="info-ribbon">
+                        <span>Action: <strong>Learning / Innovating / Connecting</strong></span>
+                    </div>
+                    <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--slate-500);">SLIDE 07 / 09</div>
+                </footer>
+            </div>
+        </section>
+
+        <!-- Section 8 -->
+        <section id="section8">
+            <div class="section-content">
+                <div class="conclusion-wrap">
+                    <span class="section-tag" style="background: rgba(255,255,255,0.1); color: white; margin-bottom: 2rem;">Final Narrative</span>
+                    <h2 style="color: white; font-size: 4rem;">Tóm lược <span class="accent">& Tương lai</span></h2>
+                    <p style="color: var(--slate-400); font-size: 1.25rem; margin-bottom: 3rem; line-height: 1.6;">Khối liên minh giai cấp tại Việt Nam đã chuyển mình mạnh mẽ, từ một khối liên minh chính trị vững chắc sang một hệ sinh thái hợp tác đa bên, lấy con người và tri thức làm nòng cốt.</p>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;">
+                        <div style="padding: 2rem; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 1.5rem;">
+                            <div style="font-size: 1.5rem; font-weight: 800; color: var(--primary-red); margin-bottom: 0.5rem;">Đoàn kết</div>
+                            <p style="font-size: 0.75rem; color: var(--slate-500);">Xậy dựng niềm tin chính trị vững chắc.</p>
+                        </div>
+                        <div style="padding: 2rem; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 1.5rem;">
+                            <div style="font-size: 1.5rem; font-weight: 800; color: var(--primary-red); margin-bottom: 0.5rem;">Sáng tạo</div>
+                            <p style="font-size: 0.75rem; color: var(--slate-500);">Lấy khoa học công nghệ làm động lực.</p>
+                        </div>
+                        <div style="padding: 2rem; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 1.5rem;">
+                            <div style="font-size: 1.5rem; font-weight: 800; color: var(--primary-red); margin-bottom: 0.5rem;">Thịnh vượng</div>
+                            <p style="font-size: 0.75rem; color: var(--slate-500);">Hướng tới mục tiêu dân giàu nước mạnh.</p>
+                        </div>
+                    </div>
+
+                    <p style="margin-top: 5rem; font-weight: 900; color: white; letter-spacing: 0.3em; text-transform: uppercase; font-size: 0.875rem;">HẾT BÀI THUYẾT TRÌNH</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 9 -->
+        <section id="ai-usage">
+            <div class="decor-number">09</div>
+            <div class="section-content">
+                <header>
+                    <span class="section-tag">AI Methodology</span>
+                    <h2>AI Usage & Transparency</h2>
+                    <p class="subtitle">Quy trình ứng dụng Trí tuệ nhân tạo trong việc tối ưu hóa nội dung và hình ảnh bài thuyết trình.</p>
+                </header>
+                <div class="text-wrap" style="flex: 0; padding: 1.5rem; background: var(--slate-50); border-radius: 1rem; margin-bottom: 2rem; border: 1px solid var(--slate-100);">
+                    <p style="font-size: 0.875rem; color: var(--slate-600); line-height: 1.6;">
+                        <strong>Cam kết minh bạch:</strong> AI được sử dụng như một cộng tác viên hỗ trợ kỹ thuật. Mọi lập luận chính, cấu trúc logic và tính chính xác của dữ liệu học thuật đều được nhóm kiểm duyệt và chịu trách nhiệm hoàn toàn.
+                    </p>
+                </div>
+                <div class="ai-grid">
+                    <div class="ai-tool-card">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                            <h3 style="font-size: 1.25rem;">ChatGPT</h3>
+                            <span style="font-weight: 800; color: var(--primary-red);">35%</span>
+                        </div>
+                        <p style="font-size: 0.8125rem; color: var(--slate-500);">Xây dựng prompt chuyên sâu, gợi ý từ khóa và tinh chỉnh ngôn ngữ trình bày.</p>
+                        <div class="progress-track"><div class="progress-bar" style="width: 35%"></div></div>
+                    </div>
+                    <div class="ai-tool-card">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                            <h3 style="font-size: 1.25rem;">Google AI</h3>
+                            <span style="font-weight: 800; color: var(--primary-red);">30%</span>
+                        </div>
+                        <p style="font-size: 0.8125rem; color: var(--slate-500);">Hỗ trợ cấu trúc mã nguồn web presentation và tối ưu hóa trải nghiệm người dùng.</p>
+                        <div class="progress-track"><div class="progress-bar" style="width: 30%"></div></div>
+                    </div>
+                    <div class="ai-tool-card">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                            <h3 style="font-size: 1.25rem;">Dreamina</h3>
+                            <span style="font-weight: 800; color: var(--primary-red);">20%</span>
+                        </div>
+                        <p style="font-size: 0.8125rem; color: var(--slate-500);">Sáng tạo hình ảnh minh họa bối cảnh lịch sử và thực tiễn sản xuất hiện đại.</p>
+                        <div class="progress-track"><div class="progress-bar" style="width: 20%"></div></div>
+                    </div>
+                    <div class="ai-tool-card">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                            <h3 style="font-size: 1.25rem;">Banana AI</h3>
+                            <span style="font-weight: 800; color: var(--primary-red);">15%</span>
+                        </div>
+                        <p style="font-size: 0.8125rem; color: var(--slate-500);">Xử lý đồ họa bổ trợ và concept visual chuyên biệt cho từng section.</p>
+                        <div class="progress-track"><div class="progress-bar" style="width: 15%"></div></div>
+                    </div>
+                </div>
+                <footer class="footer-bar" style="margin-top: 3rem;">
+                    <p style="font-size: 0.65rem; color: var(--slate-400); letter-spacing: 0.1em; text-transform: uppercase;">Build Version 1.0.4 — © 2026 Academic Presentation Group</p>
+                </footer>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const imageMap = {
+            theory: encodeURI("./1917-công nhân và nông dân.png"),
+            vietnam: encodeURI("./mắc xích liên kết.jpeg"),
+            newLinks: encodeURI("./phòng lab hiện đại.jpeg"),
+            transformation: encodeURI("./xưa và nay.jpeg"),
+            model: encodeURI("./sơ đồ ngũ giác.png"),
+            students: encodeURI("./giới trẻ và tiktok.png")
+        };
+
+        const bindImages = () => {
+            const images = document.querySelectorAll('img[data-image-key]');
+            images.forEach(img => {
+                const key = img.getAttribute('data-image-key');
+                if (imageMap[key]) {
+                    img.src = imageMap[key];
+                    img.onerror = () => {
+                        console.error(`Failed to load image for: ${key}`);
+                        img.style.background = '#f1f5f9';
+                    };
+                }
+            });
+        };
+        bindImages();
+
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.sidebar-nav a');
+        const main = document.getElementById('main-content');
+        const options = { threshold: 0.6 };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    const id = entry.target.getAttribute('id');
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${id}`) link.classList.add('active');
+                    });
+                }
+            });
+        }, options);
+
+        sections.forEach(section => observer.observe(section));
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    main.scrollTo({ top: targetElement.offsetTop, behavior: 'smooth' });
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>
